@@ -9,6 +9,7 @@ const FormField = ({ onChange, type, placeholder, isRequired }) => {
 			focusBorderColor="teal.600"
 			placeholder={placeholder}
 			isRequired={isRequired}
+			errorBorderColor="crimson"
 		/>
 	);
 };

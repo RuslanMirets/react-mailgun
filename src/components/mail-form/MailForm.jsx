@@ -1,6 +1,7 @@
-import { Button, useToast } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { useToasts } from "../../hooks/useToast";
 import FormField from "../form-field/FormField";
 import Textarea from "../textarea/Textarea";
 import styles from "./MailForm.module.scss";
@@ -11,19 +12,15 @@ const MailForm = () => {
 	const [message, setMessage] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	const toast = useToast();
+	const toast = useToasts();
 
-	const submitHandler = async (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
 
 		if (!email || !subject || !message) {
 			return toast({
-				position: "bottom-left",
-				title: "Ошибка",
 				description: "Заполните все поля",
 				status: "error",
-				duration: 4000,
-				isClosable: true,
 			});
 		}
 
@@ -34,33 +31,26 @@ const MailForm = () => {
 				subject,
 				message,
 			});
+			e.target.reset();
 			setLoading(false);
 			toast({
-				position: "bottom-left",
-				title: "Успех",
 				description: data.message,
 				status: "success",
-				duration: 4000,
-				isClosable: true,
 			});
 		} catch (error) {
 			setLoading(false);
 			toast({
-				position: "bottom-left",
-				title: "Ошибка",
 				description:
 					error.response && error.response.data.message
 						? error.response.data.message
 						: error.message,
 				status: "error",
-				duration: 4000,
-				isClosable: true,
 			});
 		}
 	};
 
 	return (
-		<form className={styles.root} onSubmit={submitHandler}>
+		<form className={styles.root} onSubmit={onSubmit}>
 			<FormField
 				onChange={(e) => setEmail(e.target.value)}
 				type="email"
@@ -71,7 +61,7 @@ const MailForm = () => {
 				onChange={(e) => setSubject(e.target.value)}
 				type="text"
 				isRequired
-				placeholder="Subject"
+				placeholder="Тема"
 			/>
 			<Textarea
 				onChange={(e) => setMessage(e.target.value)}

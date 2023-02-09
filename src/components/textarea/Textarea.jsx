@@ -1,8 +1,8 @@
-import { Textarea as TextareaChakra } from "@chakra-ui/react";
+import { Textarea as ChakraTextarea } from "@chakra-ui/react";
 
 const Textarea = ({ placeholder, onChange, isRequired }) => {
 	return (
-		<TextareaChakra
+		<ChakraTextarea
 			onChange={onChange}
 			variant="flushed"
 			focusBorderColor="teal.600"
