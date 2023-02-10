@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-mailgun/static/css/main.65bc52b4.css",
+    "main.js": "/react-mailgun/static/js/main.8df75fe5.js",
+    "index.html": "/react-mailgun/index.html",
+    "main.65bc52b4.css.map": "/react-mailgun/static/css/main.65bc52b4.css.map",
+    "main.8df75fe5.js.map": "/react-mailgun/static/js/main.8df75fe5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.65bc52b4.css",
+    "static/js/main.8df75fe5.js"
+  ]
+}
